@@ -1,0 +1,36 @@
+import * as THREE from 'three'
+import {OrbitControls} from "three/examples/jsm/controls/OrbitControls"
+
+import Snow from "./snow";
+import snowImg from "@/assets/textures/particles/snowflake1.png";
+const {innerWidth: WIDTH, innerHeight: HEIGHT} = window
+
+const scene = new THREE.Scene()
+const camera = new THREE.PerspectiveCamera(45, WIDTH / HEIGHT, .1, 1000)
+camera.position.set(0, 0, 160)
+camera.lookAt(scene.position)
+
+const ambientLight = new THREE.AmbientLight(0x666666)
+scene.add(ambientLight)
+
+const spotLight = new THREE.SpotLight(0xffffff)
+spotLight.castShadow = true
+spotLight.position.set(-50, 80, 50)
+scene.add(spotLight)
+
+const snow = new Snow(10000, 100, snowImg)
+scene.add(snow.particle)
+
+const renderer = new THREE.WebGLRenderer({antialias: true})
+renderer.setSize(WIDTH, HEIGHT)
+renderer.shadowMap.enabled = true
+document.body.appendChild(renderer.domElement)
+
+new OrbitControls(camera, renderer.domElement)
+const render = () => {
+    snow.snowing(.3, .03)
+    requestAnimationFrame(render)
+    renderer.render(scene, camera)
+}
+
+render()
