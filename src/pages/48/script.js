@@ -54,8 +54,6 @@ const render = () => {
     if (store.mixer && store.action) {
         store.mixer.update(clock.getDelta())
     }
-    requestAnimationFrame(render)
     renderer.render(scene, camera)
 }
-
-render()
+renderer.setAnimationLoop(render)
