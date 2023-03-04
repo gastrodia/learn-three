@@ -1,3 +1,5 @@
+import 'uno.css'
+
 /* 动画扩展你的首个场景 */
 import * as THREE from 'three'
 import Stats from "stats.js"

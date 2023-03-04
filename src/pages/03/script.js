@@ -1,3 +1,5 @@
+import 'uno.css'
+
 /*添加材质灯光和阴影*/
 import * as THREE from 'three'
 

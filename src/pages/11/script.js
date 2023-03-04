@@ -1,3 +1,5 @@
+import 'uno.css'
+
 /* DirectionalLight 平行光（太阳光）*/
 import * as THREE from 'three'
 import {createMultiMaterialObject} from "three/examples/jsm/utils/SceneUtils.js";

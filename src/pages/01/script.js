@@ -1,3 +1,5 @@
+import 'uno.css'
+
 import * as THREE from 'three'
 
 const {innerWidth: WIDTH, innerHeight: HEIGHT} = window

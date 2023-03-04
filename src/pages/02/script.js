@@ -1,3 +1,5 @@
+import 'uno.css'
+
 /* 添加三维坐标系和平面 */
 import * as THREE from 'three'
 

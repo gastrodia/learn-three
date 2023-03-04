@@ -1,3 +1,5 @@
+import 'uno.css'
+
 /* 克隆 多材质和线框 */
 import * as THREE from 'three'
 import {createMultiMaterialObject} from 'three/examples/jsm/utils/SceneUtils.js'

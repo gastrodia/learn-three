@@ -1,3 +1,5 @@
+import 'uno.css'
+
 import * as THREE from 'three'
 import {FlyControls} from "three/examples/jsm/controls/FlyControls";
 import {OBJLoader} from "three/examples/jsm/loaders/OBJLoader";

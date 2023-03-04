@@ -1,3 +1,5 @@
+import 'uno.css'
+
 import * as THREE from 'three'
 import dat from "dat.gui"
 import {OrbitControls} from "three/examples/jsm/controls/OrbitControls";

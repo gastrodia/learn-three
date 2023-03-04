@@ -1,3 +1,5 @@
+import 'uno.css'
+
 /* SpotLight 聚光灯*/
 import * as THREE from 'three'
 import {createMultiMaterialObject} from "three/examples/jsm/utils/SceneUtils.js";

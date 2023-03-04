@@ -1,3 +1,5 @@
+import 'uno.css'
+
 import * as THREE from 'three'
 import spriteImg from '@/assets/textures/particles/sprite-sheet.png'
 

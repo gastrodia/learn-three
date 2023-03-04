@@ -1,3 +1,5 @@
+import 'uno.css'
+
 /* 几何体 */
 import * as THREE from 'three'
 import {createMultiMaterialObject} from "three/examples/jsm/utils/SceneUtils.js";
