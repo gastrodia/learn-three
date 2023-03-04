@@ -28,10 +28,8 @@ for (let i = 0; i < 6; i++) {
 
 /**
  * 材质组
- * @type {MeshFaceMaterial}
+ * @type {THREE.Mesh}
  */
-const faceMaterial = new THREE.MeshFaceMaterial(materialGroup)
-
 const group = new THREE.Mesh()
 
 const gap = 5
@@ -40,7 +38,7 @@ for (let x = 0; x < gap; x++) {
     for (let y = 0; y < gap; y++) {
         for (let z = 0; z < gap; z++) {
             const boxGeometry = new THREE.BoxGeometry(gap - .1, gap - .1, gap - .1)
-            const box = new THREE.Mesh(boxGeometry, faceMaterial)
+            const box = new THREE.Mesh(boxGeometry, materialGroup)
             box.position.set(
                 x * gap - pow,
                 y * gap - pow,

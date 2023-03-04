@@ -1,6 +1,8 @@
 import {defineConfig} from 'vite'
 import {resolve, join} from 'path'
 import {readdirSync} from 'fs'
+import UnoCSS from 'unocss/vite'
+import {presetUno} from 'unocss'
 
 const resolvePath = path => resolve(__dirname, path)
 
@@ -22,13 +24,19 @@ export default defineConfig({
         ]
     },
     build: {
-        target: 'es2022',
+        target: 'esNext',
         rollupOptions: {
             input: {
                 main: resolvePath('index.html'),
                 ...dirOutput('pages'),
                 ...dirOutput('examples'),
+                ...dirOutput('webGL'),
             }
         }
-    }
+    },
+    plugins: [
+        UnoCSS({
+            presets: [presetUno()]
+        })
+    ]
 })

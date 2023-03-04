@@ -1,7 +1,7 @@
 {
   "compilerOptions": {
-    "module": "es2022",
-    "target": "es2021",
+    "module": "esNext",
+    "target": "esNext",
     "sourceMap": false,
     "paths": {
       "@/*": [

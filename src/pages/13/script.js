@@ -41,7 +41,7 @@ light_1.position.set(-4, 5, -10)
 light_1.rotation.x = -Math.PI
 scene.add(light_1)
 
-const planGeometry_1 = new THREE.PlaneBufferGeometry(light_1.width, light_1.height)
+const planGeometry_1 = new THREE.PlaneGeometry(light_1.width, light_1.height)
 // side: THREE.BackSide 只能从后面观察到
 // FrontSide 前面
 // DoubleSize 双侧
@@ -55,7 +55,7 @@ light_2.position.set(0, 5, -10)
 light_2.rotation.x = -Math.PI
 scene.add(light_2)
 
-const planGeometry_2 = new THREE.PlaneBufferGeometry(light_2.width, light_2.height)
+const planGeometry_2 = new THREE.PlaneGeometry(light_2.width, light_2.height)
 const planMaterial_2 = new THREE.MeshBasicMaterial({side: THREE.BackSide, color: light_2.color})
 const plane_2 = new THREE.Mesh(planGeometry_2, planMaterial_2)
 light_2.add(plane_2)
@@ -66,7 +66,7 @@ light_3.position.set(4, 5, -10)
 light_3.rotation.x = -Math.PI
 scene.add(light_3)
 
-const planGeometry_3 = new THREE.PlaneBufferGeometry(light_3.width, light_3.height)
+const planGeometry_3 = new THREE.PlaneGeometry(light_3.width, light_3.height)
 const planMaterial_3 = new THREE.MeshBasicMaterial({side: THREE.BackSide, color: light_3.color})
 const plane_3 = new THREE.Mesh(planGeometry_3, planMaterial_3)
 light_3.add(plane_3)
