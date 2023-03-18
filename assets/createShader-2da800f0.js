@@ -1,0 +1,1 @@
+const h=(r,c,o)=>{const a=r.createShader(r.VERTEX_SHADER),t=r.createShader(r.FRAGMENT_SHADER);r.shaderSource(a,c),r.shaderSource(t,o),r.compileShader(a),r.compileShader(t);const e=r.createProgram();return r.attachShader(e,a),r.attachShader(e,t),r.linkProgram(e),r.useProgram(e),e};export{h as c};
