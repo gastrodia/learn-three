@@ -31,6 +31,11 @@ export default defineConfig({
                 ...dirOutput('pages'),
                 ...dirOutput('examples'),
                 ...dirOutput('webGL'),
+            },
+            output: {
+                chunkFileNames: (chunkInfo) => {
+                    return "d-[name]-[hash].js"
+                }
             }
         }
     },
