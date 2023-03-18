@@ -17,7 +17,7 @@ const dirOutput = (dir = '') => {
 }
 
 export default defineConfig({
-    base: '/',
+    base: '/learn-three',
     resolve: {
         alias: [
             {find: '@', replacement: resolvePath('./src')}
