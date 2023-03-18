@@ -25,3 +25,4 @@ const FRAGMENT_SHADER_SOURCE = `
 
 const program = createShader(gl, VERTEX_SHADER_SOURCE, FRAGMENT_SHADER_SOURCE)
 
+console.log(program)
