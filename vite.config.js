@@ -33,9 +33,8 @@ export default defineConfig({
                 ...dirOutput('webGL'),
             },
             output: {
-                chunkFileNames: (chunkInfo) => {
-                    return "d-[name]-[hash].js"
-                }
+                chunkFileNames: "assets/d-[name]-[hash].js",
+                assetFileNames: "assets/d-[name]-[hash].[ext]"
             }
         }
     },
