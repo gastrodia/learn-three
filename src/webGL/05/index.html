@@ -1,0 +1,39 @@
+<!doctype html>
+<html class="h-screen w-screen overflow-hidden"  lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+    <style>
+        body {
+            position: relative;
+        }
+
+        body::before {
+            content: '';
+            display: block;
+            position: absolute;
+            top: 50%;
+            left: 0;
+            right: 0;
+            height: 1px;
+            background-color: blue;
+            transform: translateY(-50%);
+        }
+
+        body::after {
+            content: '';
+            display: block;
+            position: absolute;
+            top: 0;
+            left: 50%;
+            bottom: 0;
+            width: 1px;
+            background-color: blue;
+            transform: translateX(-50%);
+        }
+    </style>
+</head>
+<body class="m-0 overflow-hidden h-full w-full">
+<script type="module" src="./script.js"></script>
+</body>
+</html>
