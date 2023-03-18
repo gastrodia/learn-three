@@ -40,11 +40,11 @@ gl.vertexAttrib4f(onePosition, .5, .5, 0, 1.0)
 gl.drawArrays(gl.POINTS, 0 , 1)
 */
 
-const boxW = 100 / 1000 / 2 // gl_PointSize = 100.0
+const halfBoxWidth = 100 / 1000 / 2 // gl_PointSize = 100.0
 const speed = .01
-let x = boxW, direction = 1
+let x = halfBoxWidth, direction = 1
 const render = () => {
-    if (x > 1 - boxW || x < boxW) direction *= -1
+    if (x > 1 - halfBoxWidth || x < halfBoxWidth) direction *= -1
     x += speed * direction
     gl.vertexAttrib1f(onePosition, x)
     gl.drawArrays(gl.POINTS, 0 , 1)
