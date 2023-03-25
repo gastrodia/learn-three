@@ -90,4 +90,4 @@ gl.enableVertexAttribArray(onePosition)
 
 console.log(points)
 
-gl.drawArrays(gl.POINTS, 0, points.length / 2 )
+gl.drawArrays(gl.POINTS, 0, points.length / size )
