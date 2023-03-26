@@ -50,7 +50,7 @@ gl.vertexAttribPointer(onePosition, size, gl.FLOAT, false, 0, 0)
 
 gl.enableVertexAttribArray(onePosition)
 
-let step = 0.02
+const step = 0.02
 let direction = 1
 let x = 0
 new AnimationController(() => {

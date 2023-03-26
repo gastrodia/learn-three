@@ -14,26 +14,28 @@ const gl = canvas.getContext('webgl')
 
 const VERTEX_SHADER_SOURCE = `
         attribute vec4 onePosition;
-        attribute float oneScale;
         void main() {
-            gl_Position = vec4(onePosition.x * oneScale, onePosition.y * oneScale, onePosition.z, 1.0);
+            gl_Position = onePosition;
         }
     `
 const FRAGMENT_SHADER_SOURCE = `
+        precision mediump float;
+        uniform float oneOpacity;
         void main() {
-            gl_FragColor = vec4(1.0, 0.0, 0.0, 1.0);
+            gl_FragColor = vec4(1.0, 0.0, 0.0, oneOpacity);
         }
 `
 
 const program = createShader(gl, VERTEX_SHADER_SOURCE, FRAGMENT_SHADER_SOURCE)
 
 const onePosition = gl.getAttribLocation(program, 'onePosition')
-const oneScale = gl.getAttribLocation(program, 'oneScale')
+const oneOpacity = gl.getUniformLocation(program, 'oneOpacity')
 
 const points = new Float32Array([
-    0.0, 0.1,
-    -0.1, -0.1,
-    0.1, -0.1
+    0.5, 0.5,
+    -0.5, 0.5,
+    -0.5, -0.5,
+    0.5, -0.5
 ])
 
 const buffer = gl.createBuffer()
@@ -49,10 +51,10 @@ gl.enableVertexAttribArray(onePosition)
 
 const step = 0.01
 let direction = 1
-let x = -1
+let x = 0
 new AnimationController(() => {
-    if (x > 1 || x < -1) direction *= -1
+    if (x > 1 || x < 0) direction *= -1
     x += step * direction
-    gl.vertexAttrib1f(oneScale, x)
-    gl.drawArrays(gl.TRIANGLES, 0, points.length / size)
+    gl.uniform1f(oneOpacity, x)
+    gl.drawArrays(gl.TRIANGLE_FAN, 0, points.length / size)
 }, 60)

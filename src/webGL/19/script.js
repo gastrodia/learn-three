@@ -14,27 +14,42 @@ const gl = canvas.getContext('webgl')
 
 const VERTEX_SHADER_SOURCE = `
         attribute vec4 onePosition;
-        attribute float oneScale;
+        varying vec4 twoPosition;
         void main() {
-            gl_Position = vec4(onePosition.x * oneScale, onePosition.y * oneScale, onePosition.z, 1.0);
+            twoPosition = onePosition;
+            gl_Position = onePosition;
         }
     `
 const FRAGMENT_SHADER_SOURCE = `
+        precision mediump float;
+        uniform float oneHeight;
+        varying vec4 twoPosition;
+        uniform float oneArray[5];
         void main() {
-            gl_FragColor = vec4(1.0, 0.0, 0.0, 1.0);
+            for(int i = 0; i < 4; i++) {
+                if(twoPosition.y > oneArray[i + 1] && twoPosition.y < oneArray[i]) {
+                    if(twoPosition.y > oneHeight - float(i) * 0.25) {
+                         gl_FragColor = vec4(1.0, 0.0, 0.0, 1.0);
+                    }
+                }
+            }
         }
 `
 
 const program = createShader(gl, VERTEX_SHADER_SOURCE, FRAGMENT_SHADER_SOURCE)
 
 const onePosition = gl.getAttribLocation(program, 'onePosition')
-const oneScale = gl.getAttribLocation(program, 'oneScale')
+const oneHeight = gl.getUniformLocation(program, 'oneHeight')
+const oneArray = gl.getUniformLocation(program, 'oneArray')
 
 const points = new Float32Array([
-    0.0, 0.1,
-    -0.1, -0.1,
-    0.1, -0.1
+    0.5, 0.5,
+    -0.5, 0.5,
+    -0.5, -0.5,
+    0.5, -0.5
 ])
+
+gl.uniform1fv(oneArray, [0.5, 0.25, 0, -0.25, -0.5])
 
 const buffer = gl.createBuffer()
 
@@ -49,10 +64,10 @@ gl.enableVertexAttribArray(onePosition)
 
 const step = 0.01
 let direction = 1
-let x = -1
+let x = -0.5
 new AnimationController(() => {
-    if (x > 1 || x < -1) direction *= -1
+    if (x > 0.5 || x < -0.5) direction *= -1
     x += step * direction
-    gl.vertexAttrib1f(oneScale, x)
-    gl.drawArrays(gl.TRIANGLES, 0, points.length / size)
+    gl.uniform1f(oneHeight, x)
+    gl.drawArrays(gl.TRIANGLE_FAN, 0, points.length / size)
 }, 60)

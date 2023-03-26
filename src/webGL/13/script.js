@@ -1,6 +1,7 @@
 import 'uno.css'
 import {createShader} from "@/utils/createShader";
 import {AnimationController} from "@/utils/animationController";
+import {getTranslateMatrix} from "@/utils/getMatrix";
 
 const canvas = document.createElement('canvas')
 const {innerWidth: WIDTH, innerHeight: HEIGHT} = window
@@ -14,9 +15,9 @@ const gl = canvas.getContext('webgl')
 
 const VERTEX_SHADER_SOURCE = `
         attribute vec4 onePosition;
-        attribute float oneScale;
+        uniform mat4 oneMat;
         void main() {
-            gl_Position = vec4(onePosition.x * oneScale, onePosition.y * oneScale, onePosition.z, 1.0);
+            gl_Position = oneMat * onePosition;
         }
     `
 const FRAGMENT_SHADER_SOURCE = `
@@ -28,7 +29,7 @@ const FRAGMENT_SHADER_SOURCE = `
 const program = createShader(gl, VERTEX_SHADER_SOURCE, FRAGMENT_SHADER_SOURCE)
 
 const onePosition = gl.getAttribLocation(program, 'onePosition')
-const oneScale = gl.getAttribLocation(program, 'oneScale')
+const oneMat = gl.getUniformLocation(program, 'oneMat')
 
 const points = new Float32Array([
     0.0, 0.1,
@@ -49,10 +50,10 @@ gl.enableVertexAttribArray(onePosition)
 
 const step = 0.01
 let direction = 1
-let x = -1
+let x = 0
 new AnimationController(() => {
     if (x > 1 || x < -1) direction *= -1
     x += step * direction
-    gl.vertexAttrib1f(oneScale, x)
+    gl.uniformMatrix4fv(oneMat, false, getTranslateMatrix(x, x))
     gl.drawArrays(gl.TRIANGLES, 0, points.length / size)
 }, 60)
