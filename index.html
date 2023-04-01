@@ -3,6 +3,20 @@
 <head>
     <meta charset="UTF-8">
     <title>Title</title>
+    <style>
+        ul {
+            counter-reset: counter;
+            list-style: none;
+        }
+
+        li {
+            counter-increment: counter;
+        }
+
+        li::before {
+            content: counter(counter) ". ";
+        }
+    </style>
     <script type="module" src="./src/main.js"></script>
 </head>
 <body class="m-0 overflow-hidden h-full w-full">
@@ -110,6 +124,7 @@
                     <li><a class="leading-loose" href="src/webGL/17/index.html">淡入淡出</a></li>
                     <li><a class="leading-loose" href="src/webGL/18/index.html">卷入卷出</a></li>
                     <li><a class="leading-loose" href="src/webGL/19/index.html">百叶窗</a></li>
+                    <li><a class="leading-loose" href="src/webGL/20/index.html">varying变量</a></li>
 
 
                 </ul>
