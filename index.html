@@ -3,6 +3,20 @@
 <head>
     <meta charset="UTF-8">
     <title>Title</title>
+    <style>
+        ul {
+            counter-reset: counter;
+            list-style: none;
+        }
+
+        li {
+            counter-increment: counter;
+        }
+
+        li::before {
+            content: counter(counter) ". ";
+        }
+    </style>
     
   <script type="module" crossorigin src="/learn-three/assets/d-__uno-b823e30e.js"></script>
   <link rel="stylesheet" href="/learn-three/assets/d-__uno-f52cebfb.css">
@@ -112,6 +126,9 @@
                     <li><a class="leading-loose" href="src/webGL/17/index.html">淡入淡出</a></li>
                     <li><a class="leading-loose" href="src/webGL/18/index.html">卷入卷出</a></li>
                     <li><a class="leading-loose" href="src/webGL/19/index.html">百叶窗</a></li>
+                    <li><a class="leading-loose" href="src/webGL/20/index.html">varying变量</a></li>
+                    <li><a class="leading-loose" href="src/webGL/21/index.html">给图形添加背景图（纹理）</a></li>
+                    <li><a class="leading-loose" href="src/webGL/22/index.html">多重纹理</a></li>
 
 
                 </ul>
