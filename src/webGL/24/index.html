@@ -3,34 +3,46 @@
 <head>
     <meta charset="UTF-8">
     <title>Document</title>
-    
-
-  <script type="module" crossorigin src="/learn-three/assets/webGL_21-2fd75532.js"></script>
+  <script type="module" crossorigin src="/learn-three/assets/webGL_24-629de8da.js"></script>
   <link rel="modulepreload" crossorigin href="/learn-three/assets/d-__uno-b823e30e.js">
   <link rel="modulepreload" crossorigin href="/learn-three/assets/d-createShader-b7bbb4a8.js">
-  <link rel="modulepreload" crossorigin href="/learn-three/assets/d-image-3083d7b4.js">
-  <link rel="modulepreload" crossorigin href="/learn-three/assets/d-dog-9508fb5d.js">
   <link rel="stylesheet" href="/learn-three/assets/d-__uno-f52cebfb.css">
-  <link rel="stylesheet" href="/learn-three/assets/d-coordinate-9cb2bd2e.css">
 </head>
 <body class="m-0 overflow-hidden h-full w-full flex items-center justify-center">
 <script id="vertex-shader" type="x-shader/x-vertex">
     attribute vec4 onePosition;
-    attribute vec4 oneVertex;
-    varying vec2 twoVertex;
     void main() {
-        twoVertex = oneVertex.xy;
         gl_Position = onePosition;
     }
 
 </script>
 <script id="fragment-shader" type="x-shader/x-vertex">
     precision lowp float;
-    uniform sampler2D oneSampler;
-    // 使用 samplerCube 接收立方体纹理
-    varying vec2 twoVertex;
+    uniform vec3 metaballs[2];
     void main() {
-        gl_FragColor = texture2D(oneSampler, twoVertex);
+        float x = gl_FragCoord.x;
+        float y = gl_FragCoord.y;
+        float v = 0.0;
+
+        for (int i = 0; i < 2; i++)
+        {
+            vec3 item = metaballs[i];
+            float dx = item.x - x;
+            float dy = item.y - y;
+
+            // 半径？
+            float r = item.z;
+            v += r * r / (dx * dx + dy * dy);
+        }
+
+        if (v > 1.0)
+        {
+            gl_FragColor = vec4(1.0, 0.0, 0.0, 1.0);
+        }
+        else
+        {
+            discard;
+        }
     }
 
 </script>
