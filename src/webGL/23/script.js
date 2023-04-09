@@ -57,7 +57,7 @@ const [onmousemove] = useWebglXY(canvas)
 
 const render = (x = 0, y = 0) => {
     gl.uniform2fv(lookAt, new Float32Array([x, y]))
-    gl.drawArrays(gl.TRIANGLE_FAN, 0, 4)
+    gl.drawArrays(gl.TRIANGLE_FAN, 0, (points.length) / (size * 2))
 }
 
 render()

@@ -55,4 +55,4 @@ const [dogTexture, dogTextureIndex] = useTexture(gl, dogImage, 1)
 gl.uniform1i(oneSampler, borderTextureIndex)
 gl.uniform1i(twoSampler, dogTextureIndex)
 
-gl.drawArrays(gl.TRIANGLE_FAN, 0, 4)
+gl.drawArrays(gl.TRIANGLE_FAN, 0, (points.length) / (size * 2))

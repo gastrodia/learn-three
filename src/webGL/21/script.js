@@ -117,4 +117,4 @@ gl.texImage2D(gl.TEXTURE_2D, 0, gl.RGBA, gl.RGBA, gl.UNSIGNED_BYTE, image)
 
 gl.uniform1i(oneSampler, 0)
 
-gl.drawArrays(gl.TRIANGLE_FAN, 0, 4)
+gl.drawArrays(gl.TRIANGLE_FAN, 0, (points.length) / (size * 2))
