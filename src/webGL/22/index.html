@@ -5,7 +5,7 @@
     <title>Document</title>
     
 
-  <script type="module" crossorigin src="/learn-three/assets/webGL_22-e7d22525.js"></script>
+  <script type="module" crossorigin src="/learn-three/assets/webGL_22-691ae717.js"></script>
   <link rel="modulepreload" crossorigin href="/learn-three/assets/d-__uno-b823e30e.js">
   <link rel="modulepreload" crossorigin href="/learn-three/assets/d-createShader-fc86cf77.js">
   <link rel="modulepreload" crossorigin href="/learn-three/assets/d-dog-68fd6184.js">
@@ -26,10 +26,13 @@
 <script id="fragment-shader" type="x-shader/x-vertex">
     precision lowp float;
     uniform sampler2D oneSampler;
+    uniform sampler2D twoSampler;
     // 使用 samplerCube 接收立方体纹理
     varying vec2 twoVertex;
     void main() {
-        gl_FragColor = texture2D(oneSampler, twoVertex);
+        vec4 oneTexture = texture2D(oneSampler, twoVertex);
+        vec4 twoTexture = texture2D(twoSampler, twoVertex);
+        gl_FragColor = oneTexture * twoTexture;
     }
 
 </script>
