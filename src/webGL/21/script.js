@@ -1,7 +1,7 @@
 import 'uno.css'
 import {createShader} from "@/utils/createShader";
 import {loadImage} from '@/utils/image'
-import dog from '@/assets/textures/other/dog.gif'
+import dog from '@/assets/textures/other/dog.gif?url'
 
 const canvas = document.createElement('canvas')
 const {innerWidth: WIDTH, innerHeight: HEIGHT} = window
