@@ -5,7 +5,7 @@
  * @param index {number}
  * @returns {[WebGLTexture, number]}
  */
-export const useTexture = (gl, image, index) => {
+export const useTexture = (gl, image, index = 0) => {
     // 创建纹理
     const texture = gl.createTexture()
     gl.pixelStorei(gl.UNPACK_FLIP_Y_WEBGL, 1)
