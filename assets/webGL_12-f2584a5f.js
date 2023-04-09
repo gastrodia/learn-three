@@ -1,4 +1,4 @@
-import"./d-__uno-b823e30e.js";import{c as a}from"./d-createShader-fc86cf77.js";import{A as c}from"./d-animationController-60d9be32.js";const t=document.createElement("canvas"),{innerWidth:l,innerHeight:A}=window;document.body.append(t);t.width=l;t.height=A;t.style.backgroundColor="powderblue";const o=t.getContext("webgl"),R=`
+import"./d-__uno-b823e30e.js";/* empty css                     */import{c as a}from"./d-createShader-b7bbb4a8.js";import{A as c}from"./d-animationController-60d9be32.js";const t=document.createElement("canvas"),{innerWidth:l,innerHeight:A}=window;document.body.append(t);t.width=l;t.height=A;t.style.backgroundColor="powderblue";const o=t.getContext("webgl"),R=`
         attribute vec4 onePosition;
         attribute float oneRotate;
         void main() {

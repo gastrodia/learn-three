@@ -1,4 +1,4 @@
-import"./d-__uno-b823e30e.js";import{c as A}from"./d-createShader-fc86cf77.js";const e=document.createElement("canvas"),{innerWidth:l,innerHeight:b}=window;document.body.append(e);e.width=l;e.height=b;e.style.backgroundColor="powderblue";const t=e.getContext("webgl"),E=`
+import"./d-__uno-b823e30e.js";/* empty css                     */import{c as A}from"./d-createShader-b7bbb4a8.js";const e=document.createElement("canvas"),{innerWidth:l,innerHeight:b}=window;document.body.append(e);e.width=l;e.height=b;e.style.backgroundColor="powderblue";const t=e.getContext("webgl"),E=`
         attribute vec4 onePosition;
         attribute float oneSize;
         void main() {

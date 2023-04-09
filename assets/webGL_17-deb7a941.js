@@ -1,4 +1,4 @@
-import"./d-__uno-b823e30e.js";import{c as s}from"./d-createShader-fc86cf77.js";import{A}from"./d-animationController-60d9be32.js";const t=document.createElement("canvas"),{innerWidth:l,innerHeight:f}=window;document.body.append(t);t.width=l;t.height=f;t.style.backgroundColor="powderblue";const o=t.getContext("webgl"),m=`
+import"./d-__uno-b823e30e.js";/* empty css                     */import{c as s}from"./d-createShader-b7bbb4a8.js";import{A}from"./d-animationController-60d9be32.js";const t=document.createElement("canvas"),{innerWidth:l,innerHeight:f}=window;document.body.append(t);t.width=l;t.height=f;t.style.backgroundColor="powderblue";const o=t.getContext("webgl"),m=`
         attribute vec4 onePosition;
         void main() {
             gl_Position = onePosition;
