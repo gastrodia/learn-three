@@ -52,9 +52,6 @@ const image = await loadImage(ikun)
 const [texture, textureIndex] = useTexture(gl, image)
 
 gl.uniform1i(oneSampler, textureIndex)
-gl.uniform2fv(lookAt, new Float32Array([0, 0]))
-
-gl.drawArrays(gl.TRIANGLE_FAN, 0, 4)
 
 const [onmousemove] = useWebglXY(canvas)
 
@@ -62,6 +59,8 @@ const render = (x = 0, y = 0) => {
     gl.uniform2fv(lookAt, new Float32Array([x, y]))
     gl.drawArrays(gl.TRIANGLE_FAN, 0, 4)
 }
+
+render()
 
 // 注册mousemove事件监听器
 canvas.addEventListener('mousemove', e => {
