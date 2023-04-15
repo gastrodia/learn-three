@@ -56,7 +56,7 @@ const render = () => {
         x, posY.one, radius,
         x, posY.two, radius
     ]))
-    gl.drawArrays(gl.TRIANGLE_FAN, 0, 4)
+    gl.drawArrays(gl.TRIANGLE_FAN, 0, (points.length) / (size))
     requestAnimationFrame(render)
 }
 
