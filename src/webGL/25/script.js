@@ -1,7 +1,7 @@
 import 'uno.css'
 import {createShader} from "@/utils/createShader";
-import vertex from './index.vert?raw'
-import fragment from './index.frag?raw'
+import VERTEX_SHADER_SOURCE from './index.vert?raw'
+import FRAGMENT_SHADER_SOURCE from './index.frag?raw'
 
 const canvas = document.createElement('canvas')
 // const {innerWidth: WIDTH, innerHeight: HEIGHT} = window
@@ -13,9 +13,6 @@ canvas.width = WIDTH
 canvas.height = HEIGHT
 
 const gl = canvas.getContext('webgl')
-
-const VERTEX_SHADER_SOURCE = vertex
-const FRAGMENT_SHADER_SOURCE = fragment
 
 const program = createShader(gl, VERTEX_SHADER_SOURCE, FRAGMENT_SHADER_SOURCE)
 
