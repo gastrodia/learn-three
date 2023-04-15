@@ -65,6 +65,7 @@ export const vectorMinus = (vec1 = [], vec2 = []) => {
  * @param upX {number}
  * @param upY {number}
  * @param upZ {number}
+ * @returns {Float32Array<number>}
  */
 export const getViewMatrix = (eyeX, eyeY, eyeZ, lookAtX, lookAtY, lookAtZ, upX, upY, upZ) => {
     const eye = new Float32Array([eyeX, eyeY, eyeZ])
@@ -81,5 +82,30 @@ export const getViewMatrix = (eyeX, eyeY, eyeZ, lookAtX, lookAtY, lookAtZ, upX, 
         xAxis[1],                   yAxis[1],                   zAxis[1],                   0,
         xAxis[2],                   yAxis[2],                   zAxis[2],                   0,
         vectorDot(xAxis, minusEye), vectorDot(yAxis, minusEye), vectorDot(zAxis, minusEye), 1
+    ])
+}
+
+/**
+ * getOrthogonalMatrix 获取正交投影矩阵
+ * @param t {number} 上
+ * @param r {number} 右
+ * @param b {number} 下
+ * @param l {number} 左
+ * @param n {number} 近
+ * @param f {number} 远
+ * @return {Float32Array<number>}
+ */
+export const getOrthogonalMatrix = (t, r, b, l, n, f) => {
+    const width = r - l
+    const height = t - b
+    const depth = f - n
+    const tx = -(r + l) / width
+    const ty = -(t + b) / height
+    const tz = -(f + n) / depth
+    return new Float32Array([
+        2 / width, 0,           0,          tx,
+        0,         2 / height,  0,          ty,
+        0,         0,           -2 / depth, tz,
+        0,         0,           0,          1
     ])
 }
