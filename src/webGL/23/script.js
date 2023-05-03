@@ -41,7 +41,6 @@ gl.bufferData(gl.ARRAY_BUFFER, points, gl.STATIC_DRAW)
 
 const size = 2
 gl.vertexAttribPointer(onePosition, size, gl.FLOAT, false, bytes * 4, 0)
-
 gl.enableVertexAttribArray(onePosition)
 
 gl.vertexAttribPointer(oneVertex, size, gl.FLOAT, false, bytes * 4, bytes * 2)

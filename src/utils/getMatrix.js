@@ -50,37 +50,14 @@ export const getRotateXMatrix = (α = 0) => {
 }
 
 export const get4x4Matrices = (A, B) => {
-    const resultMatrix = new Float32Array(16)
+    const result = new Float32Array(16);
+
     for (let i = 0; i < 4; i++) {
-        for (let j = 0; j < 4; j++) {
-            let sum = 0.0
-            for (let k = 0; k < 4; k++) {
-                sum += A[i * 4 + k] * B[k * 4 + j]
-            }
-            resultMatrix[i * 4 + j] = sum
-        }
-    }
-    return resultMatrix
-}
-
-export const getMultiplyMatrices = (A, B) => {
-    if (A.length % B.length !== 0) {
-        throw new Error('Matrix dimensions are not compatible')
+        result[i] = A[i] * B[0] + A[i + 4] * B[1] + A[i + 8] * B[2] + A[i + 12] * B[3]
+        result[i + 4] = A[i] * B[4] + A[i + 4] * B[5] + A[i + 8] * B[6] + A[i + 12] * B[7]
+        result[i + 8] = A[i] * B[8] + A[i + 4] * B[9] + A[i + 8] * B[10] + A[i + 12] * B[11]
+        result[i + 12] = A[i] * B[12] + A[i + 4] * B[13] + A[i + 8] * B[14] + A[i + 12] * B[15]
     }
 
-    const numRowsA = A.length / B.length
-    const numColsB = B[0].length
-
-    const resultMatrix = new Array(numRowsA)
-    for (let i = 0; i < numRowsA; i++) {
-        resultMatrix[i] = new Array(numColsB).fill(0)
-        for (let j = 0; j < numColsB; j++) {
-            for (let k = 0; k < B.length; k++) {
-                resultMatrix[i][j] += A[i * B.length + k] * B[k][j]
-            }
-        }
-    }
-
-    const flattenedMatrix = resultMatrix.flat()
-    return new Float32Array(flattenedMatrix)
+    return result;
 }

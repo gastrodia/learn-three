@@ -2,7 +2,7 @@ import 'uno.css'
 import {createShader} from "@/utils/createShader";
 import VERTEX_SHADER_SOURCE from './index.vert?raw'
 import FRAGMENT_SHADER_SOURCE from './index.frag?raw'
-import {getViewMatrix, getOrthogonalMatrix} from '@/utils/dimension'
+import {lookAt, getOrthogonalMatrix} from '@/utils/dimension'
 import {get4x4Matrices} from '@/utils/getMatrix'
 
 const canvas = document.createElement('canvas')
@@ -39,11 +39,11 @@ gl.enableVertexAttribArray(onePosition)
 
 let [eye, direction] = [0.1, 1]
 const speed = 0.01
-const orthogonalMatrix = getOrthogonalMatrix(1, 1, -1, -1, 0, 10)
+const orthogonalMatrix = getOrthogonalMatrix(1, -1, 1, -1, 0, 10)
 const render = () => {
     if (eye >= 1 || eye <= 0) direction *= -1
     eye += speed * direction
-    const mat = getViewMatrix(
+    const mat = lookAt(
         0.0, eye, 0.1,
         0.0, 0.0, 0.0,
         0.0, 0.1, 0.0
