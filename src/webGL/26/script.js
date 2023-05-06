@@ -2,7 +2,7 @@ import 'uno.css'
 import {createShader} from "@/utils/createShader";
 import VERTEX_SHADER_SOURCE from './index.vert?raw'
 import FRAGMENT_SHADER_SOURCE from './index.frag?raw'
-import {getViewMatrix} from '@/utils/dimension'
+import {lookAt} from '@/utils/dimension'
 
 const canvas = document.createElement('canvas')
 // const {innerWidth: WIDTH, innerHeight: HEIGHT} = window
@@ -41,7 +41,7 @@ const speed = 0.01
 const render = () => {
     if (eye >= 1 || eye <= 0) direction *= -1
     eye += speed * direction
-    const mat = getViewMatrix(
+    const mat = lookAt(
         0.1, eye, 0.1,
         0.0, 0.0, 0.0,
         0.0, 0.1, 0.0

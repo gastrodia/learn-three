@@ -30,7 +30,7 @@ export default defineConfig({
                 main: resolvePath('index.html'),
                 ...dirOutput('pages'),
                 ...dirOutput('examples'),
-                ...dirOutput('webGL'),
+                ...dirOutput('webgl'),
             },
             output: {
                 chunkFileNames: "assets/d-[name]-[hash].js",
