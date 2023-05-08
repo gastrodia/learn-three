@@ -1,0 +1,30 @@
+<!doctype html>
+<html class="h-screen w-screen overflow-hidden" lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+    <link rel="stylesheet" href="../../styles/coordinate.css">
+
+</head>
+<body class="m-0 overflow-hidden h-full w-full flex items-center justify-center">
+<script id="vertex-shader" type="x-shader/x-vertex">
+    attribute vec4 onePosition;
+    uniform mat4 oneMat;
+    varying vec4 oneTemp;
+    void main() {
+        oneTemp = oneMat * onePosition;
+        gl_Position = oneTemp;
+    }
+
+</script>
+<script id="fragment-shader" type="x-shader/x-vertex">
+    precision mediump float;
+    varying vec4 oneTemp;
+    void main() {
+        gl_FragColor = oneTemp;
+    }
+
+</script>
+<script type="module" src="./script.js"></script>
+</body>
+</html>
