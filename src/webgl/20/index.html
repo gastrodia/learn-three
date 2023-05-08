@@ -1,0 +1,37 @@
+<!doctype html>
+<html class="h-screen w-screen overflow-hidden" lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+    
+
+  <script type="module" crossorigin src="/learn-three/assets/webgl_20-2bb74f35.js"></script>
+  <link rel="modulepreload" crossorigin href="/learn-three/assets/d-__uno-b823e30e.js">
+  <link rel="modulepreload" crossorigin href="/learn-three/assets/d-createShader-b7bbb4a8.js">
+  <link rel="modulepreload" crossorigin href="/learn-three/assets/d-animationController-60d9be32.js">
+  <link rel="modulepreload" crossorigin href="/learn-three/assets/d-getMatrix-3ac7aa35.js">
+  <link rel="stylesheet" href="/learn-three/assets/d-__uno-f52cebfb.css">
+  <link rel="stylesheet" href="/learn-three/assets/d-coordinate-9cb2bd2e.css">
+</head>
+<body class="m-0 overflow-hidden h-full w-full flex items-center justify-center">
+<script id="vertex-shader" type="x-shader/x-vertex">
+    attribute vec4 onePosition;
+    uniform mat4 oneMat;
+    varying vec4 oneTemp;
+    void main() {
+        oneTemp = oneMat * onePosition;
+        gl_Position = oneTemp;
+    }
+
+</script>
+<script id="fragment-shader" type="x-shader/x-vertex">
+    precision mediump float;
+    varying vec4 oneTemp;
+    void main() {
+        gl_FragColor = oneTemp;
+    }
+
+</script>
+
+</body>
+</html>
