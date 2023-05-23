@@ -1,0 +1,1 @@
+import"./main-ef7dcc1b.js";const e=document.createElement("canvas"),{innerWidth:t,innerHeight:o}=window;e.width=t;e.height=o;const n=e.getContext("webgl2");n.clearColor(1,0,0,1);n.clear(n.COLOR_BUFFER_BIT);document.body.append(e);
