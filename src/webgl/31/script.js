@@ -33,47 +33,68 @@ const v6 = [1.0, 1.0, -1.0]
 const v7 = [1.0, -1.0, -1.0]
 
 const points = new Float32Array([
-    ...v0,
-    ...v1,
-    ...v2,
-    ...v3,
-    ...v4,
-    ...v5,
-    ...v6,
-    ...v7
+    ...v1, ...v0, ...v3, ...v2,
+    ...v2, ...v3, ...v7, ...v6,
+    ...v3, ...v0, ...v4, ...v7,
+    ...v6, ...v5, ...v1, ...v2,
+    ...v4, ...v5, ...v6, ...v7,
+    ...v5, ...v4, ...v0, ...v1
 ])
 
-const buffer = gl.createBuffer()
+const c0 = [1.0, 0.0, 0.0]
+const c1 = [0.0, 1.0, 0.0]
+const c2 = [0.0, 0.0, 1.0]
+const c3 = [1.0, 0.0, 1.0]
+const c4 = [0.0, 0.5, 0.0]
+const c5 = [0.0, 0.5, 0.5]
+const c6 = [0.5, 0.5, 0.0]
+const c7 = [0.5, 0.0, 5.0]
 
-gl.bindBuffer(gl.ARRAY_BUFFER, buffer)
-
-gl.bufferData(gl.ARRAY_BUFFER, points, gl.STATIC_DRAW)
+const colors = new Float32Array([
+    /*...c1, ...c0, ...c3, ...c2,
+    ...c2, ...c3, ...c7, ...c6,
+    ...c3, ...c0, ...c4, ...c7,
+    ...c6, ...c5, ...c1, ...c2,
+    ...c4, ...c5, ...c6, ...c7,
+    ...c5, ...c4, ...c0, ...c1*/
+    ...c0, ...c0, ...c0, ...c0,
+    ...c1, ...c1, ...c1, ...c1,
+    ...c2, ...c2, ...c2, ...c2,
+    ...c3, ...c3, ...c3, ...c3,
+    ...c4, ...c4, ...c4, ...c4,
+    ...c5, ...c5, ...c5, ...c5,
+])
 
 const index = new Uint8Array([
-    1, 0, 3,
-    1, 3, 2,
-    2, 3, 7,
-    2, 7, 6,
-    3, 0, 4,
-    3, 4, 7,
-    6, 5, 1,
-    6, 1, 2,
-    4, 5, 6,
-    4, 6, 7,
-    5, 4, 0,
-    5, 0, 1
+    1, 0, 3, 1, 3, 2,
+    5, 4, 7, 5, 7, 6,
+    9, 8, 11, 9, 11, 10,
+    13, 12, 15, 13, 15, 14,
+    17, 16, 19, 17, 19, 18,
+    21, 20, 23, 21, 23, 22
 ])
+
+console.log(index.length)
 
 const indexBuffer = gl.createBuffer()
 gl.bindBuffer(gl.ELEMENT_ARRAY_BUFFER, indexBuffer)
 gl.bufferData(gl.ELEMENT_ARRAY_BUFFER, index, gl.STATIC_DRAW)
 
 const size = 3
+
+const buffer = gl.createBuffer()
+gl.bindBuffer(gl.ARRAY_BUFFER, buffer)
+gl.bufferData(gl.ARRAY_BUFFER, points, gl.STATIC_DRAW)
 gl.vertexAttribPointer(onePosition, size, gl.FLOAT, false, 0, 0)
 gl.enableVertexAttribArray(onePosition)
 
-// gl.vertexAttribPointer(oneColor, size, gl.FLOAT, false, bytes * 6, bytes * 3)
-// gl.enableVertexAttribArray(oneColor)
+
+const colorBuffer = gl.createBuffer()
+gl.bindBuffer(gl.ARRAY_BUFFER, colorBuffer)
+gl.bufferData(gl.ARRAY_BUFFER, colors, gl.STATIC_DRAW)
+gl.vertexAttribPointer(oneColor, size, gl.FLOAT, false, 0, 0)
+gl.enableVertexAttribArray(oneColor)
+
 gl.enable(gl.DEPTH_TEST) // 开启深度
 
 const perspectiveMatrix = getPerspectiveMatrix(45, WIDTH / HEIGHT, .1, 100)
